@@ -1,0 +1,59 @@
+win = 6
+draw = 3
+loss = 0
+rock = 1
+paper = 2
+sissor = 3
+
+def points_1 (elf1, elf2):
+    if elf1 == 'A' and elf2 == 'X':
+        return draw +rock
+    elif elf1 == 'A' and elf2 == 'Y':
+        return win+paper
+    elif elf1 == 'A' and elf2 == 'Z':
+        return loss+sissor
+    elif elf1 == 'B' and elf2 == 'X':
+        return loss+rock
+    elif elf1 == 'B' and elf2 == 'Y':
+        return draw+paper
+    elif elf1 == 'B' and elf2 == 'Z':
+        return win+sissor
+    elif elf1 == 'C' and elf2 == 'X':
+        return win+rock
+    elif elf1 == 'C' and elf2 == 'Y':
+        return loss+paper
+    elif elf1 == 'C' and elf2 == 'Z':
+        return draw+sissor
+
+def points_2 (elf1, win_lose):
+    if win_lose == 'X' and elf1 == 'A':
+        return loss + sissor
+    elif win_lose == 'X' and elf1 == 'B':
+        return loss + rock
+    elif win_lose == 'X' and elf1 == 'C':
+        return loss+paper
+    elif win_lose == 'Y' and elf1 == 'A':
+        return draw+rock
+    elif win_lose == 'Y' and elf1 == 'B':
+        return draw+paper
+    elif win_lose == 'Y' and elf1 == 'C':
+        return draw+sissor
+    elif win_lose == 'Z' and elf1 == 'A':
+        return win+paper
+    elif win_lose == 'Z' and elf1 == 'B':
+        return win+sissor
+    elif win_lose == 'Z' and elf1 == 'C':
+        return win+rock
+
+
+file1 = open('rps.txt', 'r')
+Lines = file1.readlines()
+
+ 
+
+punten = 0
+for line in Lines:
+    punten = points_2(win_lose = line[2], elf1 = line[0]) + punten 
+
+print (punten)
+    
